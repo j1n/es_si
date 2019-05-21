@@ -1,0 +1,31 @@
+
+
+block content
+html
+  head
+    link(rel="stylesheet" type="text/css" href="/static/style.css")
+    title= title
+  body
+    div(class="searchForm")
+      form(method="POST" action="/search")
+        hh index
+        select(name="index")
+          each index in indices
+            option(value=index) #{index}
+        hh search type
+        select(name="stype")
+          each type in types
+            option(value=type) #{type}
+        hh field
+        select(name="field")
+          each field in fields
+            option(value=field) #{field}
+        hh query
+        input(type='text', placeholder='.*?huita.*' name='es_query')
+        hh filter field
+        select(name="filter_field")
+          each field in fields
+            option(value=field) #{field}
+        hh filter
+        input(type='text', placeholder='.*?phpsessid.*' name='filter')
+        button(type='submit') Search

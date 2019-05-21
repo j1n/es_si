@@ -1,0 +1,32 @@
+POST _scripts/jin_regexp_query
+{
+  "script": {
+    "lang": "mustache",
+    "source": {
+      "_source": {
+        "includes": [ "url", "alexa" ],
+        "excludes": [ "body","admin","robots" ]
+      },
+      "query": {
+        "regexp": {
+          "{{field_string}}": "{{query_string}}"
+        }
+      },
+      "post_filter":{
+        "regexp":{
+          "{{field_filter}}":"{{filter_string}}"
+        }
+      },
+      "highlight":{
+        "number_of_fragments" : 3,
+        "fragment_size" : 450,
+        "fields" : {
+          "{{field_string}}": { 
+            "pre_tags" : ["88huita99"], 
+            "post_tags" : ["99huita00"] 
+          }
+        }
+      }
+    }
+  }
+}

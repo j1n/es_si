@@ -1,0 +1,18 @@
+
+block content
+html
+  head
+    link(rel="stylesheet" type="text/css" href="/static/style.css")
+    title= title
+  body
+    hh total: #{result.body.hits.total.value}
+    br
+    each data in result.body.hits.hits
+      a(href='http://' + data._source.url) #{data._source.url}
+      br
+      hh alexa: &nbsp; #{data._source.alexa}
+      br
+      each html in data.highlight.body
+        hh #{html}
+        br
+        br
